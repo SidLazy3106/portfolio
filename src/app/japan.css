@@ -50,7 +50,7 @@ body::after {
 /* ───────── Shared environment plumbing ───────── */
 .env { overflow: clip; }
 .env > .wrap { position: relative; z-index: 1; }
-.env::before { position: absolute; right: 3%; top: 70px; z-index: 0; pointer-events: none; font-family: var(--display); font-weight: 800; line-height: 1; font-size: clamp(150px, 20vw, 320px); color: var(--text); opacity: 0.05; }
+.env::before { position: absolute; right: 3%; top: 70px; z-index: 0; pointer-events: none; font-family: var(--kanji); font-weight: 800; line-height: 1; font-size: clamp(150px, 20vw, 320px); color: var(--text); opacity: 0.05; }
 .env-about::before { content: "静"; content: "静" / ""; }
 .env-gallery::before { content: "作"; content: "作" / ""; }
 .env-interior::before { content: "技"; content: "技" / ""; top: 90px; }

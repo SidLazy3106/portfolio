@@ -5,6 +5,7 @@ import "@fontsource/shippori-mincho/800.css";
 import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
 import "./japan.css";
+import "./night.css";
 import { site } from "@/content/site";
 
 const siteUrl =
@@ -35,7 +36,7 @@ export const viewport: Viewport = {
 };
 
 // Sets the saved theme before paint so there's no flash of the wrong theme.
-const themeScript = `try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'light'}catch(e){document.documentElement.dataset.theme='light'}`;
+const themeScript = `try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}`;
 
 const personLd = {
   "@context": "https://schema.org",
@@ -50,7 +51,7 @@ const personLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />

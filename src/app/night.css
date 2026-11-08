@@ -1,0 +1,86 @@
+/* ═════════ Moonlit-temple look (night default). Loaded after japan.css; presentation only. ═════════ */
+
+/* ───────── Hero: layered night scene with a giant title sandwiched between depth layers ───────── */
+.hero {
+  --text: #ece9e2; --muted: #b6b5bc; --accent: #e8796a; --accent2: #9fc3aa; --hl: #eac47c; --on-accent: #0b0e15;
+  --border: rgba(236, 233, 226, 0.16); --border2: rgba(236, 233, 226, 0.32);
+  --card: rgba(12, 16, 26, 0.66); --card2: rgba(18, 24, 38, 0.82); --bg: #0b0e15; --bg2: #10141e; --glow: rgba(232, 121, 106, 0.16);
+  min-height: max(100vh, 1130px); background: #070a14; padding-bottom: 120px;
+}
+.hero::before { display: none; }
+.hero-bg { inset: 0; height: auto; bottom: 0; }
+.hero-bg svg { position: absolute; inset: 0; }
+.hero-moon {
+  position: absolute; right: 9%; top: 11%; width: clamp(96px, 15vw, 230px); aspect-ratio: 1; border-radius: 50%;
+  background:
+    radial-gradient(circle at 62% 30%, rgba(120, 50, 60, 0.45) 0 7%, transparent 8%),
+    radial-gradient(circle at 34% 56%, rgba(120, 50, 60, 0.4) 0 9%, transparent 10%),
+    radial-gradient(circle at 70% 68%, rgba(120, 50, 60, 0.38) 0 6%, transparent 7%),
+    radial-gradient(circle at 44% 22%, rgba(120, 50, 60, 0.3) 0 5%, transparent 6%),
+    radial-gradient(circle at 36% 34%, #f7c9bb 0%, #e48f88 52%, #b95a60 100%);
+  box-shadow: 0 0 70px 24px rgba(232, 121, 106, 0.26), 0 0 220px 90px rgba(232, 121, 106, 0.12);
+}
+.hero-mid { inset: 0; }
+.hero-temple { position: absolute; inset: 0; }
+.hero-temple svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero-giant {
+  position: absolute; left: 0; right: 0; bottom: 5%; text-align: center; white-space: nowrap; pointer-events: none; user-select: none;
+  font-family: var(--display); font-weight: 800; font-size: clamp(64px, 14.4vw, 290px); line-height: 0.78; letter-spacing: 0.01em;
+  color: rgba(216, 218, 226, 0.92);
+}
+.hero-front { position: absolute; left: 0; right: 0; bottom: 0; height: min(40vw, 470px); min-height: 250px; pointer-events: none; z-index: 2; }
+.hero-front svg { width: 100%; height: 100%; display: block; }
+.hero .wrap { z-index: 3; }
+.hero-art { aspect-ratio: auto; min-height: 380px; }
+.hero .btn-primary { background: var(--accent); color: var(--on-accent); }
+.hero .btn-primary:hover { box-shadow: 0 10px 34px -10px var(--accent); }
+.hero .eyebrow, .hero .eyebrow::before { color: var(--hl); } .hero .eyebrow::before { background: var(--hl); }
+.hero-name, .hero-h { text-shadow: 0 2px 30px rgba(0, 0, 0, 0.55); }
+.hero-name .outline { -webkit-text-stroke: 1.5px var(--text); }
+.hero .tech-float { color: var(--text); }
+@media (min-width: 961px) { .hero-temple svg { transform: translateX(22%); } }
+@media (max-width: 960px) {
+  .hero { min-height: max(100vh, 1180px); padding-bottom: 80px; }
+  .hero-moon { right: 7%; top: 112px; width: clamp(84px, 22vw, 150px); }
+  .hero-giant { bottom: 8%; font-size: 14.6vw; }
+  .hero-front { height: min(70vw, 400px); }
+  .hero-art { min-height: 0; }
+}
+
+/* ───────── Headings in the poster-grotesk voice ───────── */
+.h2 { font-family: var(--display); text-transform: uppercase; font-weight: 800; letter-spacing: -0.03em; line-height: 0.98; font-size: clamp(34px, 5.2vw, 76px); }
+.lead { max-width: 640px; }
+
+/* ───────── Slash reads on a dark page ───────── */
+[data-theme="dark"] .slash, [data-theme="dark"] .slash-ink { background: #000; }
+[data-theme="dark"] .slash-stroke { stroke: #ddd9d0; stroke-width: 3; opacity: 0.85; }
+[data-theme="dark"] .slash-shine { stroke: #ffffff; }
+[data-theme="dark"] .slash-fleck { background: #ddd9d0; }
+[data-theme="dark"] .slash-fleck:nth-of-type(3n) { background: var(--blossom); }
+
+/* ───────── Photographic interlude ───────── */
+.photos { padding: 70px 0 110px; }
+.photos-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 26px; }
+.photos-head span { font-family: "JetBrains Mono Variable", ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.photos-head b { font-family: var(--display); font-weight: 800; font-size: clamp(24px, 3.6vw, 52px); line-height: 0.98; letter-spacing: -0.03em; text-transform: uppercase; text-align: right; max-width: 14ch; }
+.photos-grid { display: grid; grid-template-columns: 1.7fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; height: clamp(420px, 50vw, 640px); }
+.photo { position: relative; overflow: hidden; margin: 0; border-radius: 6px; border: 1px solid var(--border2); isolation: isolate;
+  background: radial-gradient(circle at 70% 30%, rgba(228, 143, 136, 0.5) 0 8%, transparent 9%), linear-gradient(180deg, #10152a, #1b1626); }
+.photo-big { grid-row: 1 / span 2; }
+.photo-img { position: absolute; inset: -10% 0; }
+.photo-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.62) saturate(0.8) contrast(1.1); transform: scale(1.04); transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.6s; }
+.photo:hover .photo-img img { transform: scale(1.1); filter: brightness(0.78) saturate(0.9) contrast(1.1); }
+.photo::after { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, rgba(10, 16, 36, 0.35) 0%, rgba(10, 12, 24, 0.1) 40%, rgba(8, 10, 20, 0.78) 100%); mix-blend-mode: multiply; }
+.photo figcaption { position: absolute; left: 16px; bottom: 14px; z-index: 2; display: flex; gap: 12px; align-items: baseline; font-family: "JetBrains Mono Variable", ui-monospace, monospace; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #ece9e2; }
+.photo figcaption span { color: var(--hl); }
+@media (max-width: 760px) {
+  .photos-grid { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
+  .photo, .photo-big { grid-row: auto; aspect-ratio: 4 / 3; }
+  .photos-head { flex-direction: column; align-items: flex-start; } .photos-head b { text-align: left; max-width: none; }
+}
+
+/* ───────── Contact dusk + footer in the night palette ───────── */
+.env-landscape { background: linear-gradient(180deg, #0b0e15 0%, #131827 28%, #2a1c2a 58%, #4a2128 82%, #171512 100%); }
+.foot { background: #171512; }
+
+@media print { .photos { display: none !important; } }

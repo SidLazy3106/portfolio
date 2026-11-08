@@ -8,7 +8,7 @@ const MOSS = "#59634B";
 const BLOSSOM = "#E8A8B2";
 
 /** Curved-eave roof tier, used for pagodas and houses. */
-function roof(cx: number, y: number, w: number, h: number) {
+export function roof(cx: number, y: number, w: number, h: number) {
   const l = cx - w, r = cx + w;
   return `M${l} ${y + 12} Q${cx - w * 0.62} ${y + 6} ${cx - w * 0.34} ${y - h * 0.55} L${cx - w * 0.16} ${y - h} L${cx + w * 0.16} ${y - h} L${cx + w * 0.34} ${y - h * 0.55} Q${cx + w * 0.62} ${y + 6} ${r} ${y + 12} Q${cx + w * 0.5} ${y + 4} ${cx} ${y + 6} Q${cx - w * 0.5} ${y + 4} ${l} ${y + 12} Z`;
 }
@@ -139,10 +139,10 @@ export function SamuraiPoster() {
       <g transform="translate(60 52) rotate(-6)">
         <rect width="52" height="52" rx="4" fill={VERMILION} />
         <rect x="3.5" y="3.5" width="45" height="45" rx="2" fill="none" stroke={IVORY} strokeOpacity="0.6" strokeWidth="1.2" />
-        <text x="26" y="39" textAnchor="middle" fontSize="33" fill={IVORY} style={{ fontFamily: "var(--display)", fontWeight: 800 }}>侍</text>
+        <text x="26" y="39" textAnchor="middle" fontSize="33" fill={IVORY} style={{ fontFamily: "var(--kanji)", fontWeight: 800 }}>侍</text>
       </g>
       {/* vertical lettering */}
-      <text x="496" y="120" fontSize="30" fill={IVORY} fillOpacity="0.9" style={{ fontFamily: "var(--display)", fontWeight: 800, writingMode: "vertical-rl", letterSpacing: "0.18em" }}>武士道</text>
+      <text x="496" y="120" fontSize="30" fill={IVORY} fillOpacity="0.9" style={{ fontFamily: "var(--kanji)", fontWeight: 800, writingMode: "vertical-rl", letterSpacing: "0.18em" }}>武士道</text>
     </svg>
   );
 }
@@ -212,7 +212,7 @@ export function Lantern() {
       <ellipse cx="38" cy="86" rx="9" ry="22" fill={IVORY} opacity="0.18" />
       <rect x="27" y="158" width="36" height="9" rx="2" fill={INK} />
       <path d="M45 167 v26 M39 167 v20 M51 167 v20" stroke={INK} strokeWidth="2" />
-      <text x="45" y="116" textAnchor="middle" fontSize="26" fill={IVORY} fillOpacity="0.92" style={{ fontFamily: "var(--display)", fontWeight: 800 }}>禅</text>
+      <text x="45" y="116" textAnchor="middle" fontSize="26" fill={IVORY} fillOpacity="0.92" style={{ fontFamily: "var(--kanji)", fontWeight: 800 }}>禅</text>
     </svg>
   );
 }

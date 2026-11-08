@@ -11,7 +11,9 @@ import { Timeline } from "@/components/Timeline";
 import { ResumeViewer } from "@/components/ResumeViewer";
 import { ContactForm } from "@/components/ContactForm";
 import { ContactArt, DeskArt } from "@/components/art/SceneArt";
-import { Bamboo, CherryBranch, GardenScene, Lantern, Mountains, Roofline, RockGarden, SamuraiPoster, SunsetLandscape } from "@/components/art/Japan";
+import { Bamboo, CherryBranch, GardenScene, Lantern, RockGarden, SunsetLandscape } from "@/components/art/Japan";
+import { NightFront, NightSky, NightTemple } from "@/components/art/Night";
+import { PhotoBand } from "@/components/PhotoBand";
 import { InkSlash } from "@/components/InkSlash";
 import { ShojiDoors } from "@/components/ShojiDoors";
 import { Petals } from "@/components/Petals";
@@ -52,13 +54,11 @@ export default async function Home() {
       <SmoothScroll />
       <Nav />
       <main id="main">
-        {/* HERO — "The Samurai Entrance". Layers: 1 mountains, 2 glow + pagoda/torii rooflines, 3 copy + samurai, 4 sakura branch */}
+        {/* HERO — moonlit entrance. Layers: 1 sky + moon, 2 temple, 3 copy + giant title, 4 mossy foreground */}
         <ParallaxHero id="home" className="hero no-print" aria-label="Introduction">
-          <div className="hero-bg" data-parallax-layer="1" aria-hidden="true"><Mountains /></div>
-          <div className="hero-mid" data-parallax-layer="2" aria-hidden="true">
-            <div className="hero-glow" />
-            <div className="hero-roof"><Roofline /></div>
-          </div>
+          <div className="hero-bg" data-parallax-layer="1" aria-hidden="true"><NightSky /><div className="hero-moon" /></div>
+          <div className="hero-mid" data-parallax-layer="2" aria-hidden="true"><div className="hero-temple"><NightTemple /></div></div>
+          <div className="hero-giant" data-parallax-layer="3" aria-hidden="true">{site.name.split(" ")[0].toUpperCase()}</div>
           <Petals count={9} seed={7} />
           <div className="wrap">
             <div className="hero-grid">
@@ -83,7 +83,6 @@ export default async function Home() {
                 <a className="scroll-ind" href="#about"><span className="mouse" aria-hidden="true" />scroll to explore</a>
               </div>
               <div className="hero-art" data-parallax-layer="3">
-                <SamuraiPoster />
                 {site.hero.floatingTech.map((t, i) => {
                   const pos = [
                     { left: "0%", top: "46%" },
@@ -101,9 +100,9 @@ export default async function Home() {
               </div>
             </div>
           </div>
-        <div className="hero-branch" data-parallax-layer="4" aria-hidden="true"><CherryBranch uid="hero" /></div>
+        <div className="hero-front" data-parallax-layer="4" aria-hidden="true"><NightFront /></div>
         </ParallaxHero>
-        <InkSlash from="#7a2016" to="var(--bg)" />
+        <InkSlash from="#0b0e15" to="var(--bg)" />
 
         {/* ABOUT */}
         <ParallaxHero id="about" className="sec env env-about no-print" mode="pass" strength={0.35}>
@@ -132,6 +131,14 @@ export default async function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </ParallaxHero>
+
+        {/* STILL GARDENS — photographic interlude */}
+        <ParallaxHero className="photos env no-print" mode="pass" strength={0.2} aria-label="Photo gallery">
+          <div className="wrap">
+            <div className="photos-head" aria-hidden="true"><span>— Still gardens</span><b>Moonlit paths, quiet lanterns.</b></div>
+            <PhotoBand />
           </div>
         </ParallaxHero>
 

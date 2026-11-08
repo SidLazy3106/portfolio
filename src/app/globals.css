@@ -8,20 +8,20 @@
   --border: rgba(23, 21, 18, 0.16); --border2: rgba(23, 21, 18, 0.3);
   --on-accent: #f7efe0; --glow: rgba(185, 54, 31, 0.12);
   --err: #a12b16; --ink: #171512; --wood: #493326; --blossom: #e8a8b2;
-  --display: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --display: "Inter Variable", system-ui, sans-serif; --kanji: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
   --shadow: 0 24px 50px -30px rgba(73, 51, 38, 0.5);
   color-scheme: light;
 }
 [data-theme="dark"] {
-  /* "night": warm ink, ivory text, brighter vermilion for contrast */
-  --bg: #14110e; --bg2: #1c1815; --card: #231e1a; --card2: #2b251f; --bg-warm: #1f1913;
-  --accent: #e2573d; --accent2: #a3b08a; --hl: #e3b867;
-  --text: #f0e5d0; --muted: #b3a792;
-  --border: rgba(240, 229, 208, 0.12); --border2: rgba(240, 229, 208, 0.22);
-  --on-accent: #14110e; --glow: rgba(226, 87, 61, 0.16);
-  --err: #ff9a85; --ink: #171512; --wood: #493326; --blossom: #e8a8b2;
-  --display: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.85);
+  /* "night": blue-black ink, moonlit ivory text, coral-red accent */
+  --bg: #0b0e15; --bg2: #10141e; --card: #141925; --card2: #1b2130; --bg-warm: #0f131c;
+  --accent: #e8796a; --accent2: #9fc3aa; --hl: #eac47c;
+  --text: #ece9e2; --muted: #adacb3;
+  --border: rgba(236, 233, 226, 0.12); --border2: rgba(236, 233, 226, 0.26);
+  --on-accent: #0b0e15; --glow: rgba(232, 121, 106, 0.16);
+  --err: #ff9a85; --ink: #05070c; --wood: #493326; --blossom: #e8a8b2;
+  --display: "Inter Variable", system-ui, sans-serif; --kanji: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.9);
   color-scheme: dark;
 }
 
