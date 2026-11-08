@@ -85,8 +85,10 @@ section { scroll-margin-top: 96px; }
 @media (max-width: 900px) { .nav-links { display: none; } .nav-burger { display: inline-grid; } .nav-resume { display: none; } }
 
 /* ───────── Hero ───────── */
-.hero { padding: 72px 0 64px; position: relative; }
+.hero { padding: 72px 0 64px; position: relative; clip-path: inset(-80px 0 0 0); /* lets the dot grid bleed up under the nav but keeps shifted layers from covering About */ }
 .hero-bg { position: absolute; inset: -80px 0 0 0; pointer-events: none; background-image: radial-gradient(circle at 1px 1px, var(--border) 1px, transparent 0); background-size: 28px 28px; -webkit-mask-image: radial-gradient(ellipse 70% 60% at 65% 40%, #000 30%, transparent 75%); mask-image: radial-gradient(ellipse 70% 60% at 65% 40%, #000 30%, transparent 75%); }
+.hero-mid { position: absolute; inset: 0; pointer-events: none; }
+.hero-orbit { position: absolute; left: -14%; top: 34%; width: 640px; height: 640px; max-width: 80vw; max-height: 80vw; border-radius: 50%; border: 1px dashed var(--border); opacity: 0.7; }
 .hero-glow { position: absolute; width: 520px; height: 520px; right: 4%; top: 40px; border-radius: 50%; background: radial-gradient(circle, var(--glow), transparent 65%); pointer-events: none; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 40px; align-items: center; position: relative; }
 .hero-name { font-family: "Space Grotesk Variable", sans-serif; font-weight: 700; font-size: clamp(48px, 7.2vw, 98px); line-height: 0.95; letter-spacing: -0.04em; margin: 14px 0 18px; }
@@ -330,6 +332,11 @@ section { scroll-margin-top: 96px; }
 .foot { margin-top: 120px; border-top: 1px solid var(--border); padding: 32px 0 40px; }
 .foot-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--muted); }
 .foot-in a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: none; }
+
+/* ───────── Lenis ───────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: clip; }
 
 /* ───────── Motion ───────── */
 @supports (animation-timeline: view()) {

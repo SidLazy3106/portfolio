@@ -1,6 +1,8 @@
 import { site, sortedProjects } from "@/content/site";
 import { getRepos, type Repo } from "@/lib/github";
 import { Nav } from "@/components/Nav";
+import { ParallaxHero } from "@/components/ParallaxHero";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { Footer } from "@/components/Footer";
 import { Typer } from "@/components/Typer";
 import { Rich } from "@/components/Rich";
@@ -43,15 +45,19 @@ export default async function Home() {
 
   return (
     <>
+      <SmoothScroll />
       <Nav />
       <main id="main">
-        {/* HERO */}
-        <section id="home" className="hero no-print" aria-label="Introduction">
-          <div className="hero-bg" aria-hidden="true" />
-          <div className="hero-glow" aria-hidden="true" />
+        {/* HERO — four parallax layers: 1 dot grid, 2 glow + orbit ring, 3 copy, 4 illustration */}
+        <ParallaxHero id="home" className="hero no-print" aria-label="Introduction">
+          <div className="hero-bg" data-parallax-layer="1" aria-hidden="true" />
+          <div className="hero-mid" data-parallax-layer="2" aria-hidden="true">
+            <div className="hero-glow" />
+            <div className="hero-orbit" />
+          </div>
           <div className="wrap">
             <div className="hero-grid">
-              <div>
+              <div data-parallax-layer="3">
                 {site.avatar && <img className="avatar" src={site.avatar} alt={`Photo of ${site.name}`} width={64} height={64} />}
                 <div className="eyebrow">{site.hero.eyebrow}</div>
                 <h1 className="hero-name">
@@ -71,7 +77,7 @@ export default async function Home() {
                 </div>
                 <a className="scroll-ind" href="#about"><span className="mouse" aria-hidden="true" />scroll to explore</a>
               </div>
-              <div className="hero-art">
+              <div className="hero-art" data-parallax-layer="4">
                 <HeroArt />
                 {site.hero.floatingTech.map((t, i) => {
                   const pos = [
@@ -90,7 +96,7 @@ export default async function Home() {
               </div>
             </div>
           </div>
-        </section>
+        </ParallaxHero>
 
         {/* ABOUT */}
         <section id="about" className="sec no-print">

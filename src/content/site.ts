@@ -193,6 +193,7 @@ export const projects: Project[] = [
     featured: true,
     order: 1,
     cover: "mfa",
+    githubRepoName: "KYC-Updated",
     short:
       "A standalone multi-factor verification interface (KYC) built to drop into other web apps as an adaptable authentication layer, with time-based verification to stop credential misuse.",
     stack: ["Python", "Web architecture", "Time-based verification", "MFA"],
@@ -252,6 +253,7 @@ export const projects: Project[] = [
     status: "In progress",
     order: 3,
     cover: "securex",
+    githubRepoName: "Anti-virus-software",
     short: "A team-built PC application that combines antivirus, browser safety and in-depth security checks in one desktop tool.",
     stack: ["Desktop app", "Antivirus", "Browser safety", "[ADD STACK]"],
     repo: "",

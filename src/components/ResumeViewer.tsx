@@ -37,7 +37,7 @@ export function ResumeViewer() {
         {view === "pdf" ? (
           <iframe className="paper-frame" src={`${site.resumePdf}#view=FitH`} title="Resume PDF preview" loading="lazy" />
         ) : (
-          <article className="paper" aria-label="Resume quick view">
+          <article className="paper" data-lenis-prevent aria-label="Resume quick view">
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 16, flexWrap: "wrap" }}>
               <div>
                 <p className="hf" style={{ fontSize: 26, fontWeight: 700, letterSpacing: "-0.02em", margin: 0, lineHeight: 1.1 }}>{site.name}</p>

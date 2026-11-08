@@ -92,7 +92,7 @@ export function Gallery({ items, title }: { items: Screenshot[]; title: string }
       )}
 
       {full && (
-        <div className="lightbox" role="dialog" aria-modal="true" aria-label={`${title} — full-screen image`} onClick={(e) => e.target === e.currentTarget && setFull(false)}>
+        <div className="lightbox" data-lenis-prevent role="dialog" aria-modal="true" aria-label={`${title} — full-screen image`} onClick={(e) => e.target === e.currentTarget && setFull(false)}>
           <button ref={closeRef} type="button" className="g-full lb-close" onClick={() => setFull(false)} aria-label="Close full-screen view"><Close size={20} /></button>
           <div className="stage" {...swipe}>
             <div className="stage-in" key={`f${i}`}>
