@@ -24,7 +24,7 @@ function supabaseHeaders(key: string): Record<string, string> {
 
 export async function POST(req: Request) {
   const url = process.env.SUPABASE_URL?.replace(/\/$/, "");
-  const key = process.env.SUPABASE_SECRET_KEY;
+  const key = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
   if (!url || !key) {
     return json(503, { ok: false, error: "The contact form isn't connected yet. Please email me directly." });
   }
