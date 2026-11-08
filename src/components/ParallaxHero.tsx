@@ -18,7 +18,18 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const FULL: Record<string, number> = { "1": 70, "2": 55, "3": 40, "4": 10 };
 const COMPACT: Record<string, number> = { "1": 40, "2": 28 };
 
-export function ParallaxHero({ children, id, className, "aria-label": ariaLabel }: { children: ReactNode; id?: string; className?: string; "aria-label"?: string }) {
+type Props = {
+  children: ReactNode;
+  id?: string;
+  className?: string;
+  "aria-label"?: string;
+  /** "hero": layers drift while the section scrolls off the top. "pass": layers drift across the whole time the section is on screen. */
+  mode?: "hero" | "pass";
+  /** Scales the movement (use < 1 for tall content sections). */
+  strength?: number;
+};
+
+export function ParallaxHero({ children, id, className, "aria-label": ariaLabel, mode = "hero", strength = 1 }: Props) {
   const root = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -34,12 +45,17 @@ export function ParallaxHero({ children, id, className, "aria-label": ariaLabel 
       },
       (ctx) => {
         const amounts = ctx.conditions?.full ? FULL : COMPACT;
+        const pass = mode === "pass";
         const tl = gsap.timeline({
-          scrollTrigger: { trigger: el, start: "0% 0%", end: "100% 0%", scrub: true },
+          scrollTrigger: pass
+            ? { trigger: el, start: "top bottom", end: "bottom top", scrub: true }
+            : { trigger: el, start: "0% 0%", end: "100% 0%", scrub: true },
         });
         el.querySelectorAll<HTMLElement>("[data-parallax-layer]").forEach((layer) => {
-          const y = amounts[layer.dataset.parallaxLayer ?? ""];
-          if (y) tl.to(layer, { yPercent: y, ease: "none" }, 0);
+          const y = (amounts[layer.dataset.parallaxLayer ?? ""] ?? 0) * strength;
+          if (!y) return;
+          if (pass) tl.fromTo(layer, { yPercent: -y / 2 }, { yPercent: y / 2, ease: "none" }, 0);
+          else tl.to(layer, { yPercent: y, ease: "none" }, 0);
         });
       },
     );
@@ -52,7 +68,7 @@ export function ParallaxHero({ children, id, className, "aria-label": ariaLabel 
       live = false;
       mm.revert();
     };
-  }, []);
+  }, [mode, strength]);
 
   return (
     <section ref={root} id={id} className={className} aria-label={ariaLabel} data-parallax-layers>

@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/inter";
-import "@fontsource-variable/space-grotesk";
+import "@fontsource/shippori-mincho/700.css";
+import "@fontsource/shippori-mincho/800.css";
 import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
+import "./japan.css";
 import { site } from "@/content/site";
 
 const siteUrl =
@@ -27,13 +29,13 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0b0d12" },
-    { media: "(prefers-color-scheme: light)", color: "#f5f4ef" },
+    { media: "(prefers-color-scheme: dark)", color: "#14110e" },
+    { media: "(prefers-color-scheme: light)", color: "#f0e5d0" },
   ],
 };
 
 // Sets the saved theme before paint so there's no flash of the wrong theme.
-const themeScript = `try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'dark'}catch(e){document.documentElement.dataset.theme='dark'}`;
+const themeScript = `try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='light'||t==='dark')?t:'light'}catch(e){document.documentElement.dataset.theme='light'}`;
 
 const personLd = {
   "@context": "https://schema.org",
@@ -48,7 +50,7 @@ const personLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />

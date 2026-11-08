@@ -1,0 +1,176 @@
+/* ═════════ The Art of the Samurai — Japanese editorial / Zen layer ═════════
+   Everything here is presentation only. Tokens live in globals.css; scenes are decorative (aria-hidden). */
+
+[data-theme="light"] { --lattice: rgba(73, 51, 38, 0.1); --lattice-strong: rgba(73, 51, 38, 0.2); --beam-a: #5b4030; --beam-b: #3b281c; }
+[data-theme="dark"]  { --lattice: rgba(240, 229, 208, 0.05); --lattice-strong: rgba(240, 229, 208, 0.16); --beam-a: #5b4030; --beam-b: #2c1d14; }
+
+/* washi grain over the whole page (static, cheap, never intercepts input) */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.5;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .3  0 0 0 0 .22  0 0 0 0 .14  0 0 0 .5 -.16'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* sharper, print-like corners across components */
+.btn, .chip, .fbtn, .icon-btn, .ct-link, .ct-link .ci, .badge, .mono-tile, .sk-ico, .gh-ico, .field input, .field textarea, .notice { border-radius: 4px; }
+.pcard, .repo, .sk-card, .tl-card, .stat, .form, .paper-wrap, .about-art, .course, .gh-note, .empty, .side-card, .stage, .thumb { border-radius: 6px; }
+.avail { border-radius: 4px; }
+.nav { border-radius: 10px; }
+
+/* ───────── Hero: The Samurai Entrance ───────── */
+.hero {
+  --text: #f0e5d0; --muted: rgba(240, 229, 208, 0.9);
+  --accent: #f0e5d0; --accent2: #fbe3b0; --on-accent: #171512; --hl: #fbe3b0;
+  --border: rgba(240, 229, 208, 0.3); --border2: rgba(240, 229, 208, 0.55);
+  --card: rgba(23, 21, 18, 0.58); --card2: rgba(23, 21, 18, 0.7); --bg: #7a2016; --bg2: #8d2419;
+  --glow: rgba(240, 229, 208, 0.16);
+  margin-top: -78px; padding-top: 150px; padding-bottom: 96px; isolation: isolate; overflow-x: clip; color: var(--text);
+  background: linear-gradient(180deg, #b9361f 0%, #ac301b 46%, #7a2016 100%);
+}
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(ellipse 70% 55% at 72% 38%, rgba(255, 190, 140, 0.22), transparent 70%); }
+.hero .wrap { position: relative; z-index: 1; }
+.hero-bg { position: absolute; left: 0; right: 0; bottom: 0; height: 66%; pointer-events: none; }
+.hero-roof { position: absolute; left: 0; right: 0; bottom: 0; height: 44%; pointer-events: none; }
+.hero-bg svg, .hero-roof svg, .env-scene svg, .env-dusk svg, .env-rocks svg, .env-bamboo svg, .hero-branch svg, .env-branch svg { width: 100%; height: 100%; display: block; }
+.hero-branch svg, .env-branch svg { height: auto; }
+.hero-branch { position: absolute; top: -10px; right: -2%; width: min(48vw, 690px); z-index: 2; pointer-events: none; }
+.hero-art { aspect-ratio: 520 / 560; max-width: 560px; }
+.hero .tech-float { color: #f0e5d0; border-color: rgba(240, 229, 208, 0.4); }
+.hero .btn-ghost { color: #f0e5d0; }
+.hero .btn-ghost:hover { background: rgba(240, 229, 208, 0.12); border-color: #f0e5d0; }
+.hero-name .outline { -webkit-text-stroke: 1.5px #f0e5d0; }
+.hero-name, .hero-h { text-shadow: 0 2px 24px rgba(60, 12, 6, 0.28); }
+.hero .eyebrow { color: #fbe3b0; }
+.hero .eyebrow::before { background: #fbe3b0; }
+@keyframes inkIn { from { opacity: 0; transform: translateY(16px); filter: blur(5px); } to { opacity: 1; transform: none; filter: none; } }
+.hero .eyebrow, .hero-name span, .typer-row, .hero-h, .hero-p, .avail, .hero-ctas { animation: inkIn 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.hero-name span:nth-child(2) { animation-delay: 0.1s; } .typer-row { animation-delay: 0.2s; } .hero-h { animation-delay: 0.28s; } .hero-p { animation-delay: 0.34s; } .avail { animation-delay: 0.4s; } .hero-ctas { animation-delay: 0.46s; }
+@media (max-width: 960px) { .hero { padding-top: 124px; } .hero-art { max-width: 420px; } .hero-branch { width: min(66vw, 420px); } }
+@media (max-width: 640px) { .hero { padding-top: 118px; } .hero-branch { width: 64vw; top: 0; } }
+
+/* ───────── Shared environment plumbing ───────── */
+.env { overflow: clip; }
+.env > .wrap { position: relative; z-index: 1; }
+.env::before { position: absolute; right: 3%; top: 70px; z-index: 0; pointer-events: none; font-family: var(--display); font-weight: 800; line-height: 1; font-size: clamp(150px, 20vw, 320px); color: var(--text); opacity: 0.05; }
+.env-about::before { content: "静"; content: "静" / ""; }
+.env-gallery::before { content: "作"; content: "作" / ""; }
+.env-interior::before { content: "技"; content: "技" / ""; top: 90px; }
+.env-garden::before { content: "桜"; content: "桜" / ""; right: auto; left: 2%; }
+.env-landscape::before { content: "旅"; content: "旅" / ""; opacity: 0.07; }
+
+/* ───────── About: The Zen Courtyard ───────── */
+.env-bamboo { position: absolute; left: 0; top: -10%; bottom: -10%; width: clamp(70px, 9vw, 150px); opacity: 0.5; pointer-events: none; }
+.env-rocks { position: absolute; left: 0; right: 0; bottom: -6px; height: 190px; color: var(--wood); opacity: 0.4; pointer-events: none; }
+[data-theme="dark"] .env-rocks { color: var(--text); opacity: 0.2; }
+.env-about { padding-bottom: 150px; }
+@media (max-width: 760px) { .env-bamboo { opacity: 0.28; width: 56px; } .env-rocks { height: 120px; } }
+
+/* ───────── Projects: a curated editorial gallery ───────── */
+.pcard { background: var(--card); border: 1px solid var(--border2); box-shadow: 7px 7px 0 -1px color-mix(in srgb, var(--ink) 13%, transparent); }
+.pcard:hover { border-color: var(--text); box-shadow: 11px 11px 0 -1px color-mix(in srgb, var(--accent) 22%, transparent); transform: translate(-3px, -4px); }
+.pcard::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1); z-index: 3; pointer-events: none; }
+.pcard:hover::after { transform: scaleX(1); }
+.pcover { background: #1c1814; }
+.pcover::after { content: ""; position: absolute; inset: 10px; border: 1px solid rgba(240, 229, 208, 0.4); pointer-events: none; z-index: 1; }
+.ptitle { letter-spacing: -0.005em; font-weight: 800; }
+.repo { background: var(--card); border-color: var(--border2); }
+.repo:hover { transform: translateY(-3px); border-color: var(--text); }
+.fbtn { border-color: var(--border2); }
+
+/* ───────── Skills: The Traditional Interior (shoji, wood, lantern) ───────── */
+.env-interior { background: var(--bg-warm); padding-top: 150px; padding-bottom: 130px; }
+.env-shoji {
+  position: absolute; inset: -12% 0; pointer-events: none;
+  background-image:
+    radial-gradient(ellipse 55% 45% at 82% 14%, rgba(255, 223, 160, 0.5), transparent 70%),
+    linear-gradient(to right, var(--lattice-strong) 0 3px, transparent 3px),
+    linear-gradient(to bottom, var(--lattice-strong) 0 3px, transparent 3px),
+    linear-gradient(to right, var(--lattice) 0 1px, transparent 1px),
+    linear-gradient(to bottom, var(--lattice) 0 1px, transparent 1px);
+  background-size: 100% 100%, 240px 100%, 100% 240px, 40px 100%, 100% 40px;
+}
+[data-theme="dark"] .env-shoji { background-image: radial-gradient(ellipse 55% 45% at 82% 14%, rgba(255, 190, 110, 0.14), transparent 70%), linear-gradient(to right, var(--lattice-strong) 0 3px, transparent 3px), linear-gradient(to bottom, var(--lattice-strong) 0 3px, transparent 3px), linear-gradient(to right, var(--lattice) 0 1px, transparent 1px), linear-gradient(to bottom, var(--lattice) 0 1px, transparent 1px); }
+.env-interior::after, .env-interior > .beam-top { content: ""; }
+.env-interior::after { position: absolute; left: 0; right: 0; top: 0; height: 22px; z-index: 2; pointer-events: none; background: repeating-linear-gradient(90deg, transparent 0 13px, rgba(0, 0, 0, 0.14) 13px 14px), linear-gradient(var(--beam-a), var(--beam-b)); box-shadow: 0 12px 22px -12px rgba(0, 0, 0, 0.5); }
+.env-lantern { position: absolute; top: 20px; right: clamp(16px, 8vw, 130px); width: clamp(44px, 5.2vw, 72px); z-index: 1; pointer-events: none; }
+.env-lantern svg { width: 100%; height: auto; display: block; transform-origin: 50% 0; animation: sway 7s ease-in-out infinite; }
+@keyframes sway { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+.sk-card { background: color-mix(in srgb, var(--card) 92%, transparent); border-color: var(--border2); }
+.course { background: color-mix(in srgb, var(--card) 70%, transparent); }
+
+/* ───────── Experience: The Sakura Garden ───────── */
+.env-garden { background: linear-gradient(180deg, var(--bg) 0, var(--bg) 6%, color-mix(in srgb, var(--accent2) 12%, var(--bg)) 100%); padding-bottom: 150px; }
+.env-scene { position: absolute; left: 0; right: 0; bottom: -4%; height: min(380px, 44vw); min-height: 220px; opacity: 0.75; pointer-events: none; }
+.env-branch { position: absolute; top: -26px; right: -1%; width: min(34vw, 430px); opacity: 0.95; z-index: 0; pointer-events: none; }
+@media (max-width: 760px) { .env-branch { width: 52vw; opacity: 0.8; } }
+
+/* ───────── Contact: The Final Landscape ───────── */
+.env-landscape {
+  --bg: #14110e; --bg2: #1c1815; --card: rgba(23, 21, 18, 0.64); --card2: rgba(35, 30, 26, 0.86);
+  --text: #f0e5d0; --muted: rgba(240, 229, 208, 0.84); --accent: #e2573d; --accent2: #a3b08a; --hl: #e3b867;
+  --border: rgba(240, 229, 208, 0.2); --border2: rgba(240, 229, 208, 0.36); --on-accent: #14110e; --glow: rgba(226, 87, 61, 0.2); --err: #ff9a85;
+  color: var(--text); padding-top: 150px; padding-bottom: clamp(240px, 30vw, 420px);
+  background: linear-gradient(180deg, #171512 0%, #221612 30%, #4a1d17 62%, #8d2419 84%, #171512 100%);
+}
+.env-dusk { position: absolute; left: 0; right: 0; bottom: -30px; height: min(520px, 62vw); min-height: 300px; pointer-events: none; }
+.env-landscape .form, .env-landscape .ct-link { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+
+/* ───────── Katana-style ink slash between scenes ───────── */
+.slash { position: relative; height: clamp(150px, 21vw, 300px); margin: -1px 0; overflow: clip; isolation: isolate; pointer-events: none; background: var(--ink); }
+.slash-ink { position: absolute; inset: 0; background: var(--ink); }
+.slash-t, .slash-b { position: absolute; inset: 0 -10%; }
+.slash-t { background: var(--from); clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 100%); }
+.slash-b { background: var(--to); clip-path: polygon(100% 0%, 100% 100%, 0% 100%); }
+.slash-line { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.slash-line path { fill: none; stroke-dasharray: 1; stroke-dashoffset: 0; stroke-linecap: round; }
+.slash-stroke { stroke: var(--ink); stroke-width: 7; opacity: 0.92; }
+.slash-shine { stroke: #f7ead0; stroke-width: 1.3; opacity: 0; transform: translate(-3px, -2px); }
+.slash-fleck { position: absolute; border-radius: 55% 45% 60% 40%; background: var(--ink); opacity: 0; }
+.slash-fleck:nth-of-type(odd) { background: #f0e5d0; }
+.slash-fleck:nth-of-type(3n) { background: var(--blossom); border-radius: 80% 0 80% 0; }
+@media (max-width: 640px) { .slash-fleck:nth-of-type(even) { display: none; } }
+
+/* ───────── Shoji doors sliding open into the garden ───────── */
+.shoji { position: relative; height: clamp(110px, 15vw, 200px); margin: -1px 0; background: var(--bg); overflow: clip; pointer-events: none; z-index: 2; }
+.shoji-l, .shoji-r {
+  position: absolute; top: 0; bottom: 0; width: 50.4%; visibility: hidden; background-color: var(--bg-warm);
+  box-shadow: inset 0 0 0 7px var(--wood);
+  background-image: linear-gradient(to right, var(--lattice-strong) 0 3px, transparent 3px), linear-gradient(to bottom, var(--lattice-strong) 0 3px, transparent 3px), linear-gradient(to right, var(--lattice) 0 1px, transparent 1px), linear-gradient(to bottom, var(--lattice) 0 1px, transparent 1px);
+  background-size: 33.3% 100%, 100% 50%, 24px 100%, 100% 24px;
+}
+.shoji-l { left: 0; } .shoji-r { right: 0; }
+
+/* ───────── Drifting petals (few, slow, behind content) ───────── */
+.petals { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.petals span { position: absolute; top: -30px; border-radius: 80% 0 80% 0; background: linear-gradient(135deg, #f8d6dc, #e8a8b2); opacity: 0; animation: petalFall linear infinite; will-change: transform, opacity; }
+@keyframes petalFall {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); opacity: 0; }
+  6% { opacity: 0.9; }
+  30% { transform: translate3d(calc(var(--drift) * 0.7), 30vh, 0) rotate(130deg); }
+  58% { transform: translate3d(calc(var(--drift) * -0.5), 62vh, 0) rotate(270deg); }
+  82% { transform: translate3d(calc(var(--drift) * 0.45), 92vh, 0) rotate(400deg); opacity: 0.85; }
+  100% { transform: translate3d(calc(var(--drift) * -0.2), 118vh, 0) rotate(520deg); opacity: 0; }
+}
+@media (max-width: 640px) { .petals span:nth-child(n + 5) { display: none; } }
+
+/* ───────── Ink-brush accent under section titles, brush-in on scroll ───────── */
+.h2::after { content: ""; display: block; width: clamp(90px, 14vw, 150px); height: 9px; margin-top: 14px; background: var(--accent); transform-origin: left; clip-path: polygon(0 55%, 4% 20%, 18% 38%, 40% 10%, 62% 34%, 84% 12%, 100% 45%, 92% 85%, 70% 70%, 48% 92%, 26% 72%, 10% 94%); }
+@supports (animation-timeline: view()) {
+  .h2::after { animation: brush linear both; animation-timeline: view(); animation-range: entry 15% cover 28%; }
+}
+@keyframes brush { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ───────── Footer: ink ground of the landscape ───────── */
+.foot { margin-top: 0; background: var(--ink); color: #d8c9ad; border-top: 0; --accent2: #a3b08a; padding-top: 28px; }
+.foot-in a { color: #f0e5d0; }
+.foot-in a:hover { color: #fbe3b0; }
+.wrap + .foot, main.wrap + .foot { margin-top: 120px; }
+
+/* ───────── Reduced motion & print ───────── */
+@media (prefers-reduced-motion: reduce) {
+  .petals { display: none; }
+  .hero .eyebrow, .hero-name span, .typer-row, .hero-h, .hero-p, .avail, .hero-ctas { animation: none !important; }
+}
+@media print {
+  .petals, .slash, .shoji, .env-bamboo, .env-rocks, .env-shoji, .env-lantern, .env-scene, .env-branch, .env-dusk, body::after { display: none !important; }
+  .env::before, .env::after { display: none !important; }
+}

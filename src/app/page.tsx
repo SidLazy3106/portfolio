@@ -10,7 +10,11 @@ import { ProjectsGrid, type ProjectWithStats } from "@/components/ProjectsGrid";
 import { Timeline } from "@/components/Timeline";
 import { ResumeViewer } from "@/components/ResumeViewer";
 import { ContactForm } from "@/components/ContactForm";
-import { ContactArt, DeskArt, HeroArt } from "@/components/art/SceneArt";
+import { ContactArt, DeskArt } from "@/components/art/SceneArt";
+import { Bamboo, CherryBranch, GardenScene, Lantern, Mountains, Roofline, RockGarden, SamuraiPoster, SunsetLandscape } from "@/components/art/Japan";
+import { InkSlash } from "@/components/InkSlash";
+import { ShojiDoors } from "@/components/ShojiDoors";
+import { Petals } from "@/components/Petals";
 import { ArrowRight, ArrowUpRight, Clock, Code, Download, Fork, Github, Graph, Linkedin, Mail, Shield, Star, Terminal } from "@/components/Icons";
 
 export const revalidate = 3600; // re-fetch GitHub data at most hourly
@@ -48,13 +52,14 @@ export default async function Home() {
       <SmoothScroll />
       <Nav />
       <main id="main">
-        {/* HERO — four parallax layers: 1 dot grid, 2 glow + orbit ring, 3 copy, 4 illustration */}
+        {/* HERO — "The Samurai Entrance". Layers: 1 mountains, 2 glow + pagoda/torii rooflines, 3 copy + samurai, 4 sakura branch */}
         <ParallaxHero id="home" className="hero no-print" aria-label="Introduction">
-          <div className="hero-bg" data-parallax-layer="1" aria-hidden="true" />
+          <div className="hero-bg" data-parallax-layer="1" aria-hidden="true"><Mountains /></div>
           <div className="hero-mid" data-parallax-layer="2" aria-hidden="true">
             <div className="hero-glow" />
-            <div className="hero-orbit" />
+            <div className="hero-roof"><Roofline /></div>
           </div>
+          <Petals count={9} seed={7} />
           <div className="wrap">
             <div className="hero-grid">
               <div data-parallax-layer="3">
@@ -77,14 +82,14 @@ export default async function Home() {
                 </div>
                 <a className="scroll-ind" href="#about"><span className="mouse" aria-hidden="true" />scroll to explore</a>
               </div>
-              <div className="hero-art" data-parallax-layer="4">
-                <HeroArt />
+              <div className="hero-art" data-parallax-layer="3">
+                <SamuraiPoster />
                 {site.hero.floatingTech.map((t, i) => {
                   const pos = [
-                    { left: "2%", top: "44%" },
-                    { right: "0%", top: "2%" },
-                    { left: "18%", bottom: "0%" },
-                    { right: "4%", top: "58%" },
+                    { left: "0%", top: "46%" },
+                    { right: "-2%", top: "52%" },
+                    { left: "12%", bottom: "2%" },
+                    { right: "6%", bottom: "8%" },
                   ][i % 4];
                   const dot = ["#8B7CFF", "#53D6C7", "#F4C96B", "#8B7CFF"][i % 4];
                   return (
@@ -96,10 +101,14 @@ export default async function Home() {
               </div>
             </div>
           </div>
+        <div className="hero-branch" data-parallax-layer="4" aria-hidden="true"><CherryBranch uid="hero" /></div>
         </ParallaxHero>
+        <InkSlash from="#7a2016" to="var(--bg)" />
 
         {/* ABOUT */}
-        <section id="about" className="sec no-print">
+        <ParallaxHero id="about" className="sec env env-about no-print" mode="pass" strength={0.35}>
+          <div className="env-bamboo" data-parallax-layer="2" aria-hidden="true"><Bamboo /></div>
+          <div className="env-rocks" data-parallax-layer="1" aria-hidden="true"><RockGarden /></div>
           <div className="wrap">
             <SectionHead idx="0x01" tag="about" title="A Little About Me" />
             <div className="about-grid">
@@ -124,10 +133,10 @@ export default async function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </ParallaxHero>
 
         {/* PROJECTS */}
-        <section id="projects" className="sec no-print">
+        <section id="projects" className="sec env env-gallery no-print">
           <div className="wrap">
             <SectionHead idx="0x02" tag="projects" title="Things I've Built" lead="A collection of experiments, ideas, and projects brought to life." />
             <ProjectsGrid projects={projects} />
@@ -175,7 +184,10 @@ export default async function Home() {
         </section>
 
         {/* SKILLS */}
-        <section id="skills" className="sec no-print">
+        <InkSlash from="var(--bg)" to="var(--bg-warm)" />
+        <ParallaxHero id="skills" className="sec env env-interior no-print" mode="pass" strength={0.3}>
+          <div className="env-shoji" data-parallax-layer="1" aria-hidden="true" />
+          <div className="env-lantern" data-parallax-layer="4" aria-hidden="true"><Lantern /></div>
           <div className="wrap">
             <SectionHead idx="0x03" tag="skills" title="My Technical Toolkit" lead="Technologies and tools I use to turn ideas into reality." />
             <div className="sk-grid">
@@ -206,15 +218,19 @@ export default async function Home() {
               <span className="mono" style={{ fontSize: 12, color: "var(--muted)", marginLeft: "auto" }}>speaks {site.spokenLanguages}</span>
             </div>
           </div>
-        </section>
+        </ParallaxHero>
 
         {/* EXPERIENCE */}
-        <section id="experience" className="sec no-print">
+        <ShojiDoors />
+        <ParallaxHero id="experience" className="sec env env-garden no-print" mode="pass" strength={0.35}>
+          <div className="env-scene" data-parallax-layer="1" aria-hidden="true"><GardenScene /></div>
+          <Petals count={7} seed={21} />
+          <div className="env-branch" data-parallax-layer="4" aria-hidden="true"><CherryBranch uid="garden" /></div>
           <div className="wrap">
             <SectionHead idx="0x04" tag="experience" title="My Journey So Far" lead="Education, internships and certifications — newest first." />
             <Timeline entries={site.timeline} />
           </div>
-        </section>
+        </ParallaxHero>
 
         {/* RESUME */}
         <section id="resume" className="sec">
@@ -222,7 +238,9 @@ export default async function Home() {
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="sec no-print">
+        <InkSlash from="var(--bg)" to="#171512" />
+        <ParallaxHero id="contact" className="sec env env-landscape no-print" mode="pass" strength={0.3}>
+          <div className="env-dusk" data-parallax-layer="1" aria-hidden="true"><SunsetLandscape /></div>
           <div className="wrap">
             <SectionHead idx="0x06" tag="contact" title="Let's Build Something Great" lead="Have an interesting idea, opportunity, or collaboration in mind? I'd love to hear about it." />
             <div className="ct-grid">
@@ -249,7 +267,7 @@ export default async function Home() {
               <ContactForm />
             </div>
           </div>
-        </section>
+        </ParallaxHero>
       </main>
       <Footer />
     </>
