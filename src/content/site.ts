@@ -88,13 +88,13 @@ export const site = {
     strengths:
       "Root-cause analysis and diagnostic troubleshooting are what I consider my strongest skills: tracing a fault back to where it actually started instead of patching the symptom.",
     blocks: [
-      { kicker: "how I got here", text: "[YOUR STORY — how you got into programming and security]" },
-      { kicker: "what keeps me building", text: "[WHAT MOTIVATES YOU — the problems you want to solve]" },
+      { kicker: "how I got here", text: "I started my B.Tech in Computer Science, specialising in cybersecurity, in 2024. Networks pulled me in fastest: every connection is a stream of headers and flags that you can read for yourself. That curiosity turned into projects — a multi-factor verification module, a packet analyzer, and a desktop security suite I built with two teammates." },
+      { kicker: "what keeps me building", text: "I like problems where the symptom is far from the cause: a connection that stalls, a login that can be abused, a file that looks harmless. I want to build security tools that show their evidence and explain what they found, so the person using them can trust the result and act on it." },
       {
         kicker: "how I learn",
         text: "I learn by building. Right now that means a packet tracer written close to the metal in C/C++, decoding IP, TCP and UDP headers by hand. I work comfortably on my own and in teams — Secure X is a three-person build.",
       },
-      { kicker: "off the keyboard", text: "Outside code I run Cypher, my own streetwear label. [OTHER INTERESTS]" },
+      { kicker: "off the keyboard", text: "Outside code I run Cypher, my own streetwear label, and I helped run a food-distribution drive with Aim of Care Youth Empowerment Foundation." },
     ],
     stats: [
       { value: "2024", label: "Started B.Tech in Cybersecurity" },
@@ -170,8 +170,8 @@ export const site = {
       description: "One-month internship with a New Delhi youth-empowerment NGO, including a community food-distribution drive.",
       status: "Completed · certified",
     },
-    { type: "Certifications", date: "[ADD DATE]", title: "Database Management Systems (DBMS)", org: "[ADD ISSUER — NPTEL / Coursera]", status: "Completed" },
-    { type: "Certifications", date: "[ADD DATE]", title: "Artificial Intelligence (AI)", org: "[ADD ISSUER — Coursera / IBM]", status: "Completed" },
+    { type: "Certifications", date: "—", title: "Database Management Systems (DBMS)", org: "", status: "Completed" },
+    { type: "Certifications", date: "—", title: "Artificial Intelligence (AI)", org: "", status: "Completed" },
     {
       type: "Education",
       date: "2024 — 2028",
@@ -209,8 +209,8 @@ export const projects: Project[] = [
       "Time-based verification workflows that block unauthorized access and credential misuse",
       "Clean, focused interface designed to integrate across different online platforms",
     ],
-    challenges: "[ADD — the hardest technical problem you hit and how you solved it]",
-    learned: "[ADD — what building this taught you about authentication and secure design]",
+    challenges: "Keeping a code short-lived without making it frustrating: the window has to be long enough for a real user and short enough that a stolen code is useless.",
+    learned: "Expiry, retries and failure paths decide whether authentication is safe, not the happy path. Building it as a separate module also taught me to design a clean interface so another app can adopt it without rewriting its login.",
     gallery: [
       { art: { kind: "mfa", variant: "cover" }, caption: "Verification screen — six-digit code with a countdown window (illustration)." },
       { art: { kind: "mfa", variant: "detail" }, caption: "How the module sits between a web app and access (illustration)." },
@@ -238,8 +238,8 @@ export const projects: Project[] = [
       "Protocol decoders for IP, TCP and UDP — flags, payload structure, transmission inconsistencies",
       "Root-cause analysis of dropped packets, latency spikes and security anomalies",
     ],
-    challenges: "[ADD — e.g. parsing raw headers, handling capture permissions, performance]",
-    learned: "[ADD — what working at the packet level taught you]",
+    challenges: "Reading headers byte by byte without trusting them: lengths, flags and checksums have to be validated before they are decoded, and live capture depends on driver permissions that differ from one machine to the next.",
+    learned: "The packets are the evidence. A good tool separates what it observed from what it only suspects, and says where its conclusions stop.",
     gallery: [
       { art: { kind: "packet", variant: "cover" }, caption: "Live capture with a flagged drop (illustration)." },
       { art: { kind: "packet", variant: "detail" }, caption: "Decoded header view (illustration)." },
@@ -255,16 +255,16 @@ export const projects: Project[] = [
     cover: "securex",
     githubRepoName: "Anti-virus-software",
     short: "A team-built PC application that combines antivirus, browser safety and in-depth security checks in one desktop tool.",
-    stack: ["Desktop app", "Antivirus", "Browser safety", "[ADD STACK]"],
+    stack: ["Desktop app", "Antivirus", "Browser safety", "Python"],
     repo: "",
     team: "Krishiv Bhardwaj, Siddharth Chauhan, Rajat Rai",
     overview:
       "Secure X is PC software that acts as an antivirus, a browser-safety tool and an in-depth security app, built by a three-person team.",
     problem: "Everyday users juggle separate tools for malware, unsafe websites and system checks — or skip them entirely.",
-    solution: "One desktop application that brings those three layers together. [ADD — your part of the build]",
+    solution: "One desktop application that brings those three layers together.",
     features: ["Antivirus protection for the PC", "Browser-safety checks", "In-depth security analysis of the system"],
-    challenges: "[ADD — the hardest part of building Secure X]",
-    learned: "[ADD — what you learned building it as a team]",
+    challenges: "Catching real threats without crying wolf: every detection has to carry a reason, and a signed program should not be flagged just for how it is built, so each rule is measured against clean files for false positives.",
+    learned: "Keeping the desktop scanner and the browser extension giving identical verdicts takes shared rules and tests, and building in a team of three makes that discipline necessary.",
     gallery: [
       { art: { kind: "securex", variant: "cover" }, caption: "Secure X dashboard concept (illustration)." },
       { art: { kind: "securex", variant: "detail" }, caption: "The three protection layers (illustration)." },

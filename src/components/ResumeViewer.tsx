@@ -70,8 +70,8 @@ export function ResumeViewer() {
             <h3>Experience</h3>
             <div className="rrow"><span>Intern — Aim of Care Youth Empowerment Foundation</span><span>Aug 2026</span></div>
             <h3>Certifications</h3>
-            <div className="rrow"><span>Database Management Systems (DBMS)</span><span><Rich text="[ISSUER]" /></span></div>
-            <div className="rrow"><span>Artificial Intelligence (AI)</span><span><Rich text="[ISSUER]" /></span></div>
+            <div className="rrow"><span>Database Management Systems (DBMS)</span><span>Completed</span></div>
+            <div className="rrow"><span>Artificial Intelligence (AI)</span><span>Completed</span></div>
             <div className="rrow"><span>ISC2 Certified in Cybersecurity (CC)</span><span>In progress</span></div>
           </article>
         )}

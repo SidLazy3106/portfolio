@@ -41,7 +41,7 @@ export function Timeline({ entries }: { entries: TimelineEntry[] }) {
                 <div className="tl-mdate"><Rich text={e.date} /></div>
                 <div className="tl-type">{label}</div>
                 <h3 className="tl-title">{e.title}</h3>
-                <div className="tl-org"><Rich text={e.org} /></div>
+                {e.org && <div className="tl-org"><Rich text={e.org} /></div>}
                 {e.description && <p className="tl-desc">{e.description}</p>}
                 {e.status && <span className="tl-status chip">{e.status}</span>}
               </div>
