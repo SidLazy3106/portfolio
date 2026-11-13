@@ -7,3 +7,9 @@ out
 next-env.d.ts
 .vercel
 .DS_Store
+
+# Local AI-tool files (keep out of the repo)
+CLAUDE.md
+.claude/
+.agents/
+skills-lock.json
